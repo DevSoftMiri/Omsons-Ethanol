@@ -8,9 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --brand: #0a4b9e;
@@ -35,7 +33,7 @@
         h2,
         h3,
         .display {
-            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-family: 'Inter', sans-serif;
             letter-spacing: -0.02em
         }
 
@@ -56,7 +54,14 @@
             font-weight: 600;
             font-size: 12px;
             letter-spacing: .08em;
-            text-transform: uppercase
+            text-transform: uppercase;
+            transition: all .3s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .chip:hover {
+            background: var(--brand);
+            color: #fff;
+            transform: translateY(-1px);
         }
 
         .btn-primary {
@@ -72,7 +77,9 @@
         }
 
         .btn-primary:hover {
-            background: var(--brand-dark)
+            background: var(--brand-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 16px 30px -12px rgba(10, 75, 158, .5);
         }
 
         .btn-ghost {
@@ -81,18 +88,34 @@
             border-radius: 10px;
             font-weight: 600;
             color: var(--ink);
-            background: #fff
+            background: #fff;
+            transition: all .25s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--brand);
+            color: var(--brand);
+            transform: translateY(-2px);
+            background: #f7faff;
         }
 
         .card {
             background: #fff;
             border: 1px solid var(--line);
-            border-radius: 20px
+            border-radius: 20px;
+            transition: all .35s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 26px 54px -28px rgba(10, 75, 158, .32);
+            border-color: #cfe0f6;
         }
 
         .divider {
             height: 1px;
-            background: var(--line)
+            background: var(--line);
+            transition: background .3s ease;
         }
 
         .num-badge {
@@ -105,7 +128,14 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-family: 'Space Grotesk', sans-serif
+            font-family: 'Inter', sans-serif;
+            transition: all .3s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .card:hover .num-badge {
+            background: var(--brand-dark);
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px -4px rgba(10, 75, 158, .3);
         }
 
         .strip {
@@ -119,17 +149,30 @@
             gap: 10px;
             font-weight: 500;
             font-size: 14px;
-            opacity: .95
+            opacity: .95;
+            transition: opacity .3s ease, color .3s ease;
+        }
+
+        .strip-item:hover {
+            opacity: 1;
         }
 
         .kbd {
-            font-family: 'Space Grotesk';
+            font-family: 'Inter', sans-serif;
             font-size: 12px;
             padding: 2px 8px;
             border: 1px solid var(--line);
             border-radius: 6px;
             background: #fff;
-            color: var(--muted)
+            color: var(--muted);
+            transition: all .25s ease;
+            cursor: default;
+        }
+
+        .kbd:hover {
+            border-color: var(--brand);
+            color: var(--brand);
+            background: var(--brand-soft);
         }
 
         .grad-hero {
@@ -155,7 +198,14 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            flex: none
+            flex: none;
+            transition: all .3s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .card:hover .tick {
+            background: var(--brand);
+            color: #fff;
+            transform: scale(1.08);
         }
 
         .tag {
@@ -163,15 +213,47 @@
             letter-spacing: .14em;
             text-transform: uppercase;
             color: var(--muted);
-            font-weight: 600
+            font-weight: 600;
+            transition: color .3s ease;
+        }
+
+        .card:hover .tag {
+            color: var(--brand);
+        }
+
+        .link-arrow {
+            position: relative;
+            display: inline-block;
+            transition: color .3s cubic-bezier(.22, 1, .36, 1);
+            text-decoration: none;
+        }
+
+        .link-arrow::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--brand);
+            transition: width .4s cubic-bezier(.22, 1, .36, 1);
         }
 
         .link-arrow:hover {
-            color: var(--brand)
+            color: var(--brand);
+        }
+
+        .link-arrow:hover::after {
+            width: 100%;
         }
 
         .glow {
-            box-shadow: 0 30px 80px -30px rgba(10, 75, 158, .35)
+            box-shadow: 0 30px 80px -30px rgba(10, 75, 158, .35);
+            transition: box-shadow .4s ease;
+        }
+
+        .glow:hover {
+            box-shadow: 0 40px 100px -30px rgba(10, 75, 158, .45);
         }
 
         .input-field {
@@ -185,19 +267,31 @@
             background: #fbfdff;
             font: inherit;
             font-size: 14px;
-            transition: .2s
+            transition: all .3s cubic-bezier(.22, 1, .36, 1);
         }
 
         .input-field:focus {
             border-color: var(--brand);
             background: #fff;
-            box-shadow: 0 0 0 4px var(--brand-soft)
+            box-shadow: 0 0 0 4px var(--brand-soft);
+            transform: translateY(-1px);
+        }
+
+        .input-field:hover:not(:focus) {
+            border-color: #cfe0f6;
+            background: #fff;
         }
 
         .field-label {
             font-size: 12px;
             font-weight: 700;
-            color: var(--ink)
+            color: var(--ink);
+            transition: color .3s ease;
+        }
+
+        .input-field:focus~.field-label,
+        .input-field:hover~.field-label {
+            color: var(--brand);
         }
 
         /* Video Container */
@@ -211,6 +305,11 @@
             background: #000;
             box-shadow: 0 26px 54px -28px rgba(10, 75, 158, .32);
             border: 1px solid var(--line);
+            transition: box-shadow .4s ease;
+        }
+
+        .video-container:hover {
+            box-shadow: 0 40px 70px -28px rgba(10, 75, 158, .42);
         }
 
         .video-container video {
@@ -224,6 +323,13 @@
 
         .process-video {
             background: #000;
+            position: relative;
+        }
+
+        @media (max-width: 640px) {
+            .process-video {
+                margin-bottom: 26px;
+            }
         }
 
         .audio-control {
@@ -239,6 +345,23 @@
             color: #fff;
             backdrop-filter: blur(10px);
             z-index: 2;
+            transition: all .3s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        @media (max-width: 640px) {
+            .audio-control {
+                display: none;
+            }
+
+            .video-container {
+                padding-bottom: 56.25%;
+                margin-bottom: 0;
+            }
+        }
+
+        .audio-control:hover {
+            background: rgba(11, 18, 32, .88);
+            transform: translateY(-2px);
         }
 
         .audio-toggle {
@@ -252,12 +375,12 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background .2s ease, transform .2s ease;
+            transition: all .3s cubic-bezier(.22, 1, .36, 1);
         }
 
         .audio-toggle:hover {
             background: rgba(255, 255, 255, .24);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
 
         .audio-toggle svg {
@@ -268,6 +391,7 @@
         .volume-slider {
             width: 110px;
             accent-color: #fff;
+            transition: accent-color .3s ease;
         }
 
         .ethosure-step h4 {
@@ -289,11 +413,11 @@
             object-fit: contain;
             object-position: center;
             display: block;
-            transition: transform 0.35s cubic-bezier(.22, 1, .36, 1);
+            transition: transform 0.4s cubic-bezier(.22, 1, .36, 1);
         }
 
         .card:hover .image-container img {
-            transform: scale(1.02);
+            transform: scale(1.04);
         }
 
         /* Motion */
@@ -306,6 +430,30 @@
             to {
                 opacity: 1;
                 transform: translateY(0)
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
             }
         }
 
@@ -337,16 +485,6 @@
             transform: translateY(0)
         }
 
-        .card {
-            transition: transform .35s cubic-bezier(.22, 1, .36, 1), box-shadow .35s ease, border-color .35s ease
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 26px 54px -28px rgba(10, 75, 158, .32);
-            border-color: #cfe0f6
-        }
-
         .card img {
             transition: transform .6s cubic-bezier(.22, 1, .36, 1)
         }
@@ -359,33 +497,8 @@
             transition: background .25s ease, transform .25s cubic-bezier(.22, 1, .36, 1), box-shadow .25s ease
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 16px 30px -12px rgba(10, 75, 158, .5)
-        }
-
         .btn-ghost {
-            transition: border-color .25s ease, color .25s ease, transform .25s cubic-bezier(.22, 1, .36, 1)
-        }
-
-        .btn-ghost:hover {
-            border-color: var(--brand);
-            color: var(--brand);
-            transform: translateY(-2px)
-        }
-
-        .chip {
-            transition: transform .25s ease
-        }
-
-        .tick {
-            transition: background .3s ease, color .3s ease, transform .3s ease
-        }
-
-        .card:hover .tick {
-            background: var(--brand);
-            color: #fff;
-            transform: scale(1.08)
+            transition: border-color .25s ease, color .25s ease, transform .25s cubic-bezier(.22, 1, .36, 1), background .25s ease
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -396,7 +509,10 @@
             .card img,
             .btn-primary,
             .btn-ghost,
-            .tick {
+            .tick,
+            .chip,
+            .link-arrow::after,
+            .input-field {
                 animation: none !important;
                 transition: none !important;
                 opacity: 1 !important;
@@ -433,7 +549,8 @@
             letter-spacing: .16em;
             text-transform: uppercase;
             font-weight: 700;
-            text-align: center
+            text-align: center;
+            transition: color .3s ease;
         }
 
         .trust-row {
@@ -453,18 +570,25 @@
             font-weight: 600;
             font-size: 14px;
             padding: 6px 4px;
-            transition: transform .25s ease
+            transition: all .3s cubic-bezier(.22, 1, .36, 1);
+            cursor: default;
         }
 
         .trust-item:hover {
-            transform: translateY(-2px)
+            transform: translateY(-2px);
+            text-shadow: 0 4px 8px rgba(0, 0, 0, .15);
         }
 
         .trust-item svg {
             width: 19px;
             height: 19px;
             flex: none;
-            opacity: .95
+            opacity: .95;
+            transition: opacity .3s ease;
+        }
+
+        .trust-item:hover svg {
+            opacity: 1;
         }
 
         .trust-dot {
@@ -484,7 +608,7 @@
             border: 1px solid var(--line);
             border-radius: 20px;
             padding: 24px;
-            transition: transform .35s cubic-bezier(.22, 1, .36, 1), box-shadow .35s ease, border-color .35s ease
+            transition: all .35s cubic-bezier(.22, 1, .36, 1);
         }
 
         .product-frame:hover {
@@ -564,6 +688,86 @@
             }
         }
 
+        /* Table Responsiveness */
+        table {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .card:has(table) {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            table {
+                min-width: 600px;
+                font-size: 13px;
+            }
+
+            table thead {
+                background: var(--brand-soft);
+            }
+
+            table th,
+            table td {
+                padding: 12px 8px !important;
+                white-space: nowrap;
+            }
+
+            table th {
+                font-size: 12px;
+                font-weight: 600;
+            }
+
+            .btn-compact {
+                padding: 8px 12px !important;
+                font-size: 11px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            table {
+                min-width: 550px;
+                font-size: 12px;
+            }
+
+            table th,
+            table td {
+                padding: 10px 6px !important;
+            }
+
+            .display {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+        }
+
+        /* Scroll indicator for tables on mobile */
+        .card:has(table) {
+            position: relative;
+        }
+
+        .card:has(table)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 20px;
+            background: linear-gradient(to left, rgba(10, 75, 158, .05), transparent);
+            pointer-events: none;
+            border-radius: 0 20px 20px 0;
+        }
+
+        @media (min-width: 769px) {
+            .card:has(table)::after {
+                display: none;
+            }
+        }
+
         /* Accessibility */
         @media (prefers-reduced-motion: reduce) {
             .video-container video {
@@ -579,7 +783,7 @@
     <div class="strip">
         <div class="container-x flex flex-wrap items-center justify-between gap-3 py-2.5 text-[13px]">
             <div class="flex flex-wrap items-center gap-6">
-                <span class="strip-item">✦ Class 'A' Certified Glassware</span>
+                <span class="strip-item">✦ Class 'NABL' Certified Glassware</span>
                 <span class="strip-item hidden md:inline-flex">✦ ISI Mark Compliant</span>
                 <span class="strip-item hidden md:inline-flex">✦ Trusted by Refineries Worldwide</span>
             </div>
@@ -593,12 +797,17 @@
             <div class="flex flex-col justify-center reveal-in">
                 <span class="chip w-fit">Omsons Germany · Petroleum Testing</span>
                 <h1 class="display text-4xl md:text-[42px] font-bold leading-[1.1] mt-5">
-                    Precision tools for <span style="color:var(--brand)">ethanol testing</span> in blended gasoline.
+                    Precision tools for <span style="color:var(--brand)">Ethanol Testing</span> in blended Gasoline.
                 </h1>
                 <p class="text-lg text-[color:var(--muted)] mt-5 max-w-xl">
-                    Two dedicated solutions — a complete Class 'A' laboratory kit and a portable field bottle —
+                    Two dedicated solutions — a complete 'NABL' Class laboratory kit and a portable field bottle —
                     engineered for accurate, reliable and compliant fuel analysis.
                 </p>
+
+                <div class="mt-8 flex flex-wrap gap-3">
+                    <a href="#kit" class="btn-primary">Ethanol Testing Kit</a>
+                    <a href="#ethosure" class="btn-ghost">EthoSure</a>
+                </div>
             </div>
 
             <div class="relative reveal-in d1 h-full min-h-[320px] rounded-[20px] overflow-hidden">
@@ -642,7 +851,7 @@
                         <label for="hero-product" class="field-label">Product required</label>
                         <select class="input-field" id="hero-product" name="product" required>
                             <option value="">Select a product</option>
-                            <option value="testing-kit">Class 'A' Ethanol Testing Kit</option>
+                            <option value="testing-kit">'NABL' Class Ethanol Testing Kit</option>
                             <option value="ethosure">EthoSure Ethanol Testing Bottle</option>
                             <option value="both">Both products</option>
                         </select>
@@ -719,10 +928,9 @@
                     <h2 class="display text-4xl md:text-5xl font-bold mt-4 max-w-2xl">Two ways to test ethanol content —
                         lab-grade and field-ready.</h2>
                 </div>
-                <p class="text-[color:var(--muted)] max-w-sm">Both certified Class 'A' by Omsons Germany, backed by
+                <p class="text-[color:var(--muted)] max-w-sm">Both certified 'NABL' Class by Omsons Germany, backed by
                     decades of glassware craftsmanship.</p>
             </div>
-
             <!-- PRODUCT 1 -->
             <div id="kit" class="reveal grid lg:grid-cols-2 gap-12 items-center mt-16">
                 <div class="product-frame">
@@ -731,7 +939,7 @@
                 </div>
                 <div>
                     <span class="chip">Product 01 · Complete Kit</span>
-                    <h3 class="display text-3xl md:text-4xl font-bold mt-4">Class 'A' Ethanol Testing Kit</h3>
+                    <h3 class="display text-3xl md:text-4xl font-bold mt-4">'NABL' Class Ethanol Testing Kit</h3>
                     <p class="text-[color:var(--muted)] mt-3">Accurate • Reliable • Compliant. A full laboratory-grade
                         kit built to Petroleum Industry Specification.</p>
 
@@ -740,7 +948,7 @@
                             <span class="tick">✓</span>
                             <div>
                                 <div class="font-semibold">Pipette Graduated, Serological with Silicon Bulb Filler</div>
-                                <div class="text-sm text-[color:var(--muted)]">Capacity 25 ml · ISI Mark · Class 'A'
+                                <div class="text-sm text-[color:var(--muted)]">Capacity 25 ml · ISI Mark ·'NABL' Class
                                     Certificate</div>
                             </div>
                         </div>
@@ -748,7 +956,8 @@
                             <span class="tick">✓</span>
                             <div>
                                 <div class="font-semibold">Glass Measuring Cylinder with Glass Stopper</div>
-                                <div class="text-sm text-[color:var(--muted)]">Capacity 150 ml · Class 'A' Certificate ·
+                                <div class="text-sm text-[color:var(--muted)]">Capacity 150 ml ·'NABL' Class Certificate
+                                    ·
                                     Petroleum Industry Spec</div>
                             </div>
                         </div>
@@ -775,6 +984,166 @@
                     </div>
                 </div>
             </div>
+
+            <div class="mt-10 reveal">
+                <div class="card p-5 md:p-6 overflow-x-auto">
+                    <div>
+                        <div class="tag">Buy More Save More (Including GST)</div>
+                        <h3 class="display text-[30px] md:text-[36px] font-bold mt-2">Pricing for 'NABL' Class Ethanol
+                            Testing
+                            Kit</h3>
+                    </div>
+
+                    <table class="w-full min-w-[760px] text-sm md:text-base mt-5">
+                        <thead>
+                            <tr class="text-left border-b border-[color:var(--line)]">
+                                <th class="py-3 pr-6 font-semibold">Quantity</th>
+                                <th class="py-3 pr-6 font-semibold">Discount (%)</th>
+                                <th class="py-3 pr-6 font-semibold">Price</th>
+                                <th class="py-3 pr-0 font-semibold text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-[color:var(--line)]">
+                                <td class="py-4 pr-6">1 - 2</td>
+                                <td class="py-4 pr-6"> - </td>
+                                <td class="py-4 pr-6 font-semibold">&#8377;1,749.00</td>
+                                <td class="py-4 pr-0 text-right">
+                                    <a href="#contact-enquiry" class="btn-primary btn-compact">Enquire
+                                        Now</a>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-[color:var(--line)]">
+                                <td class="py-4 pr-6">3 - 4</td>
+                                <td class="py-4 pr-6">2.86%</td>
+                                <td class="py-4 pr-6 font-semibold">&#8377;1,699.00</td>
+                                <td class="py-4 pr-0 text-right">
+                                    <a href="#contact-enquiry" class="btn-primary btn-compact">Enquire
+                                        Now</a>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-[color:var(--line)]">
+                                <td class="py-4 pr-6">5 - 9</td>
+                                <td class="py-4 pr-6">5.72%</td>
+                                <td class="py-4 pr-6 font-semibold">&#8377;1,649.00</td>
+                                <td class="py-4 pr-0 text-right">
+                                    <a href="#contact-enquiry" class="btn-primary btn-compact">Enquire
+                                        Now</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 pr-6">10+</td>
+                                <td class="py-4 pr-6">8.58%</td>
+                                <td class="py-4 pr-6 font-semibold">&#8377;1,599.00</td>
+                                <td class="py-4 pr-0 text-right">
+                                    <a href="#contact-enquiry" class="btn-primary btn-compact">Enquire
+                                        Now</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- VIDEO SECTION -->
+            <section class="py-20 md:py-24 pb-14 sm:pb-16">
+                <div class="container-x">
+                    <div class="reveal mb-8">
+                        <span class="chip">Visual Guide</span>
+                        <h2 class="display text-4xl md:text-5xl font-bold mt-4">See our testing process in action.</h2>
+                    </div>
+                    <div class="reveal">
+                        <div class="video-container process-video glow">
+                            <video id="process-video" loop playsinline preload="metadata">
+                                <source
+                                    src="https://res.cloudinary.com/dzrg0utcm/video/upload/v1783942614/Whatsapp_Video_2026-07-13_At_10.38.45_Am_cxrwvc.mp4"
+                                    type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="audio-control" aria-label="Video audio controls">
+                                <button type="button" class="audio-toggle" id="audio-toggle" aria-label="Unmute video">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <polygon points="11 5 6 9 3 9 3 15 6 15 11 19 11 5"></polygon>
+                                        <line x1="22" y1="9" x2="16" y2="15"></line>
+                                        <line x1="16" y1="9" x2="22" y2="15"></line>
+                                    </svg>
+                                </button>
+                                <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.05"
+                                    value="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROCEDURE (KIT) -->
+            <section id="procedure" class="py-24 bg-white border-y border-[color:var(--line)]">
+                <div class="container-x">
+                    <div class="max-w-2xl">
+                        <span class="chip">Test Procedure</span>
+                        <h2 class="display text-4xl md:text-5xl font-bold mt-4">Six steps to a certified ethanol
+                            reading.</h2>
+                        <p class="text-[color:var(--muted)] mt-3">Using the 'NABL' Class Ethanol Testing Kit. Follows
+                            Petroleum
+                            Industry Specification.</p>
+                    </div>
+
+                    <div class="reveal grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+                        <!-- steps -->
+                        <div class="card p-6"><span class="num-badge">1</span>
+                            <h4 class="font-bold mt-4">Measure fuel sample</h4>
+                            <p class="text-sm text-[color:var(--muted)] mt-2">Take 100 ml of ethanol blended gasoline in
+                                a clean
+                                150 ml measuring cylinder.</p>
+                        </div>
+                        <div class="card p-6"><span class="num-badge">2</span>
+                            <h4 class="font-bold mt-4">Add distilled water</h4>
+                            <p class="text-sm text-[color:var(--muted)] mt-2">Add exactly 30 ml of distilled water using
+                                the
+                                graduated pipette.</p>
+                        </div>
+                        <div class="card p-6"><span class="num-badge">3</span>
+                            <h4 class="font-bold mt-4">Shake vigorously</h4>
+                            <p class="text-sm text-[color:var(--muted)] mt-2">Insert the stopper tightly and shake the
+                                cylinder
+                                for 30 seconds.</p>
+                        </div>
+                        <div class="card p-6"><span class="num-badge">4</span>
+                            <h4 class="font-bold mt-4">Release pressure</h4>
+                            <p class="text-sm text-[color:var(--muted)] mt-2">Loosen the stopper to release vapor
+                                pressure — do
+                                not remove it.</p>
+                        </div>
+                        <div class="card p-6"><span class="num-badge">5</span>
+                            <h4 class="font-bold mt-4">Let it settle</h4>
+                            <p class="text-sm text-[color:var(--muted)] mt-2">Allow the cylinder to stand undisturbed
+                                for 5
+                                minutes.</p>
+                        </div>
+                        <div class="card p-6"><span class="num-badge">6</span>
+                            <h4 class="font-bold mt-4">Read the meniscus</h4>
+                            <p class="text-sm text-[color:var(--muted)] mt-2">Observe the separation and read the
+                                aqueous layer
+                                at the bottom of the meniscus.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 card p-6 flex flex-wrap items-center justify-between gap-4"
+                        style="background:var(--brand);color:#fff;border-color:transparent">
+                        <div>
+                            <div class="tag" style="color:#c9dcf5">Formula</div>
+                            <div class="display text-2xl font-bold mt-1">Aqueous layer (ml) = Volume of water in 100 ml
+                                sample −
+                                30 ml</div>
+                        </div>
+                        <span class="chip" style="background:rgba(255,255,255,.15);color:#fff">'NABL' Class
+                            Accuracy</span>
+                    </div>
+                </div>
+            </section>
+
+
 
             <!-- PRODUCT 2 -->
             <div id="ethosure" class="reveal grid lg:grid-cols-2 gap-12 items-center mt-24">
@@ -826,93 +1195,9 @@
         </div>
     </section>
 
-    <!-- VIDEO SECTION -->
-    <section class="py-24">
-        <div class="container-x">
-            <div class="reveal mb-8">
-                <span class="chip">Visual Guide</span>
-                <h2 class="display text-4xl md:text-5xl font-bold mt-4">See our testing process in action.</h2>
-            </div>
-            <div class="reveal">
-                <div class="video-container process-video glow">
-                    <video id="process-video" loop playsinline preload="metadata">
-                        <source
-                            src="https://res.cloudinary.com/dzrg0utcm/video/upload/v1783942614/Whatsapp_Video_2026-07-13_At_10.38.45_Am_cxrwvc.mp4"
-                            type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="audio-control" aria-label="Video audio controls">
-                        <button type="button" class="audio-toggle" id="audio-toggle" aria-label="Unmute video">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polygon points="11 5 6 9 3 9 3 15 6 15 11 19 11 5"></polygon>
-                                <line x1="22" y1="9" x2="16" y2="15"></line>
-                                <line x1="16" y1="9" x2="22" y2="15"></line>
-                            </svg>
-                        </button>
-                        <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.05"
-                            value="0">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- ETHOSURE PRICING -->
 
-    <!-- PROCEDURE (KIT) -->
-    <section id="procedure" class="py-24 bg-white border-y border-[color:var(--line)]">
-        <div class="container-x">
-            <div class="max-w-2xl">
-                <span class="chip">Test Procedure</span>
-                <h2 class="display text-4xl md:text-5xl font-bold mt-4">Six steps to a certified ethanol reading.</h2>
-                <p class="text-[color:var(--muted)] mt-3">Using the Class 'A' Ethanol Testing Kit. Follows Petroleum
-                    Industry Specification.</p>
-            </div>
 
-            <div class="reveal grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
-                <!-- steps -->
-                <div class="card p-6"><span class="num-badge">1</span>
-                    <h4 class="font-bold mt-4">Measure fuel sample</h4>
-                    <p class="text-sm text-[color:var(--muted)] mt-2">Take 100 ml of ethanol blended gasoline in a clean
-                        150 ml measuring cylinder.</p>
-                </div>
-                <div class="card p-6"><span class="num-badge">2</span>
-                    <h4 class="font-bold mt-4">Add distilled water</h4>
-                    <p class="text-sm text-[color:var(--muted)] mt-2">Add exactly 30 ml of distilled water using the
-                        graduated pipette.</p>
-                </div>
-                <div class="card p-6"><span class="num-badge">3</span>
-                    <h4 class="font-bold mt-4">Shake vigorously</h4>
-                    <p class="text-sm text-[color:var(--muted)] mt-2">Insert the stopper tightly and shake the cylinder
-                        for 30 seconds.</p>
-                </div>
-                <div class="card p-6"><span class="num-badge">4</span>
-                    <h4 class="font-bold mt-4">Release pressure</h4>
-                    <p class="text-sm text-[color:var(--muted)] mt-2">Loosen the stopper to release vapor pressure — do
-                        not remove it.</p>
-                </div>
-                <div class="card p-6"><span class="num-badge">5</span>
-                    <h4 class="font-bold mt-4">Let it settle</h4>
-                    <p class="text-sm text-[color:var(--muted)] mt-2">Allow the cylinder to stand undisturbed for 5
-                        minutes.</p>
-                </div>
-                <div class="card p-6"><span class="num-badge">6</span>
-                    <h4 class="font-bold mt-4">Read the meniscus</h4>
-                    <p class="text-sm text-[color:var(--muted)] mt-2">Observe the separation and read the aqueous layer
-                        at the bottom of the meniscus.</p>
-                </div>
-            </div>
-
-            <div class="mt-8 card p-6 flex flex-wrap items-center justify-between gap-4"
-                style="background:var(--brand);color:#fff;border-color:transparent">
-                <div>
-                    <div class="tag" style="color:#c9dcf5">Formula</div>
-                    <div class="display text-2xl font-bold mt-1">Aqueous layer (ml) = Volume of water in 100 ml sample −
-                        30 ml</div>
-                </div>
-                <span class="chip" style="background:rgba(255,255,255,.15);color:#fff">Class 'A' Accuracy</span>
-            </div>
-        </div>
-    </section>
 
     <!-- EXTRACTION (ETHOSURE) -->
     <section id="extraction" class="py-24">
@@ -920,7 +1205,8 @@
             <div class="flex flex-wrap items-end justify-between gap-6">
                 <div class="max-w-2xl">
                     <span class="chip">Water Extraction Method</span>
-                    <h2 class="ethosure-heading display text-4xl md:text-5xl font-bold mt-4">EthoSure — four steps in the field.</h2>
+                    <h2 class="ethosure-heading display text-4xl md:text-5xl font-bold mt-4">EthoSure — four steps in
+                        the field.</h2>
                 </div>
                 <p class="text-[color:var(--muted)] max-w-sm">Instructions are printed directly on the bottle for
                     on-site reference.</p>
@@ -991,7 +1277,7 @@
             <div class="reveal grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 mt-12">
                 <div class="card p-4 sm:p-6">
                     <div class="num-badge">◎</div>
-                    <h4 class="font-bold mt-4">Class 'A' Accuracy</h4>
+                    <h4 class="font-bold mt-4">'NABL' Class Accuracy</h4>
                     <p class="text-sm text-[color:var(--muted)] mt-2">Precise and reliable measurement results, every
                         test.</p>
                 </div>
@@ -1173,18 +1459,13 @@
                         <label for="product" class="field-label">Product interested in *</label>
                         <select class="input-field" id="product" name="product" required>
                             <option value="">Choose product</option>
-                            <option value="kit">Class 'A' Ethanol Testing Kit</option>
+                            <option value="kit">'NABL' Class Ethanol Testing Kit</option>
                             <option value="ethosure">EthoSure Testing Bottle</option>
                             <option value="both">Both products</option>
                             <option value="bulk">Bulk or distributor enquiry</option>
                         </select>
                     </div>
 
-                    <div class="grid gap-1.5">
-                        <label for="message" class="field-label">Requirement</label>
-                        <textarea class="input-field" id="message" name="message" rows="4"
-                            placeholder="Mention your application, required quantity or any technical question."></textarea>
-                    </div>
 
                     <label class="flex gap-2.5 items-start text-sm text-[color:var(--muted)]">
                         <input type="checkbox" name="catalogue" value="yes" class="mt-1">
@@ -1230,9 +1511,9 @@
                     : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 3 9 3 15 6 15 11 19 11 5"></polygon><path d="M15.5 8.5a5 5 0 0 1 0 7"></path><path d="M18.5 5.5a9 9 0 0 1 0 13"></path></svg>';
             }
 
-            processVideo.muted = true;
-            processVideo.volume = 0;
-            volumeSlider.value = '0';
+            processVideo.muted = false;
+            processVideo.volume = 1;
+            volumeSlider.value = '1';
             updateAudioIcon();
 
             audioToggle.addEventListener('click', function () {
@@ -1283,3 +1564,4 @@
 </body>
 
 </html>
+
